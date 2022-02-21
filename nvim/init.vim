@@ -6,7 +6,7 @@ endif
 let s:dein_dir                   = '~/.cache/dein'
 let s:dein_repo_dir              = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
-let s:toml_dir                   = '~/repository/config/.dein'
+let s:toml_dir                   = '~/repository/config/nvim/.dein'
 
 let s:toml_defx_nvim             = s:toml_dir . '/defx-nvim.toml'
 let s:toml_denite_nvim           = s:toml_dir . '/denite-nvim.toml'
@@ -76,7 +76,7 @@ if dein#load_state(s:dein_dir)
 
 	call dein#load_toml(s:toml_dispatch_vim)
 
-	call dein#load_toml(s:toml_any_jump_vim)
+	" call dein#load_toml(s:toml_any_jump_vim)
 	call dein#load_toml(s:toml_vim_easy_motion)
 	call dein#load_toml(s:toml_ack_vim)
 	call dein#load_toml(s:toml_vim_dadbob)
@@ -105,6 +105,7 @@ nnoremap <silent> <C-n> :bn<CR>
 nnoremap <silent> <C-m> :bp<CR>
 nnoremap <silent> X     :bdelete<CR>
 
+set path+=$PWD/**
 set inccommand=split
 
 set laststatus=2
