@@ -187,7 +187,7 @@ nnoremap <Down> <Nop>
 nnoremap <Right> <Nop>
 nnoremap <Left> <Nop>
 
-inoremap <Up> <Nop>"
+inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Right> <Nop>
 inoremap <Left> <Nop>
