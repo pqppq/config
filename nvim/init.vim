@@ -37,6 +37,8 @@ let s:toml_vim_dadbob         = s:toml_dir . '/vim-dadbob.toml'
 let s:toml_fzf_vim            = s:toml_dir . '/fzf-vim.toml'
 let s:toml_any_jump_vim       = s:toml_dir . '/any-jaump-vim.toml'
 let s:toml_vim_fugitive       = s:toml_dir . '/vim-fugitive.toml'
+let s:toml_vim_gitgutter		  = s:toml_dir . '/vim-gitgutter.toml'
+let s:toml_vim_repeat   		  = s:toml_dir . '/vim-repeat.toml'
 " let s:toml_deoplete_nvim = s:toml_dir . '/deoplete-nvim.toml'
 " let s:toml_language_client_neovim = s:toml_dir . '/language-client-neovim.toml'
 
@@ -79,10 +81,12 @@ if dein#load_state(s:dein_dir)
 
 	" call dein#load_toml(s:toml_any_jump_vim)
 	call dein#load_toml(s:toml_vim_easy_motion)
+	call dein#load_toml(s:toml_vim_repeat)
 	call dein#load_toml(s:toml_ack_vim)
 	call dein#load_toml(s:toml_fzf_vim)
 	call dein#load_toml(s:toml_vim_dadbob)
 	call dein#load_toml(s:toml_vim_fugitive)
+	call dein#load_toml(s:toml_vim_gitgutter)
 
 	call dein#end()
   call dein#save_state()
