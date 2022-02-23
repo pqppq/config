@@ -35,7 +35,6 @@ let s:toml_dispatch_vim       = s:toml_dir . '/dispatch-vim.toml'
 let s:toml_ack_vim            = s:toml_dir . '/ack-vim.toml'
 let s:toml_vim_dadbob         = s:toml_dir . '/vim-dadbob.toml'
 let s:toml_fzf_vim            = s:toml_dir . '/fzf-vim.toml'
-let s:toml_vim_fugitive       = s:toml_dir . '/fzf-vim.toml'
 let s:toml_any_jump_vim       = s:toml_dir . '/any-jaump-vim.toml'
 let s:toml_vim_fugitive       = s:toml_dir . '/vim-fugitive.toml'
 " let s:toml_deoplete_nvim = s:toml_dir . '/deoplete-nvim.toml'
@@ -107,9 +106,9 @@ tnoremap <silent> jj <C-\><C-n>:wq
 nnoremap <silent> <C-n> :bn<CR>
 nnoremap <silent> <C-m> :bp<CR>
 nnoremap <silent> X     :bdelete<CR>
-nnoremap <silent> gj    gT 
-nnoremap <silent> gk    gt 
-nnoremap <silent> gx    :tabclose<CR> 
+nnoremap <silent> gj    gT
+nnoremap <silent> gk    gt
+nnoremap <silent> gx    :tabclose<CR>
 nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>"
 nnoremap <silent> R :%s/<C-r>=expand('<cword>')<CR>//g<Left><Left>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
