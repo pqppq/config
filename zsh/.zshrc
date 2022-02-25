@@ -93,7 +93,7 @@ ZSH_THEME="minimal"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-completions zsh-autosuggestions history-search-multi-word)
+plugins=(vi-mode git zsh-completions zsh-autosuggestions history-search-multi-word)
 
 source $ZSH/oh-my-zsh.sh
 
