@@ -93,7 +93,7 @@ ZSH_THEME="minimal"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(vi-mode git zsh-completions zsh-autosuggestions history-search-multi-word)
+plugins=(z vi-mode git zsh-completions zsh-autosuggestions history-search-multi-word web-search copyfile copybuffer jsontools)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -130,4 +130,3 @@ autoload -U compinit && compinit -u
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 . $HOME/.asdf/asdf.sh
-
