@@ -36,5 +36,9 @@
   "python.linting.enabled": false,
   "python.autoComplete.addBrackets": true,
   "python.autoUpdateLanguageServer": true,
-  "python.analysis.diagnosticEnabled": true
+  "python.analysis.diagnosticEnabled": true,
+  //
+  "deno.enabled": true,
+  "deno.path": "~/.deno/bin/deno",
+  "deno.lint": true
 }
