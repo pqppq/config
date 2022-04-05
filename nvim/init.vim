@@ -39,6 +39,7 @@ let s:any_jump_vim       = s:toml_dir . '/any-jaump-vim.toml'
 let s:vim_fugitive       = s:toml_dir . '/vim-fugitive.toml'
 let s:vim_gitgutter      = s:toml_dir . '/vim-gitgutter.toml'
 let s:vim_repeat         = s:toml_dir . '/vim-repeat.toml'
+let s:denops_vim         = s:toml_dir . '/denops-vim.toml'
 " let s:deoplete_nvim = s:dir . '/deoplete-nvim.toml'
 " let s:language_client_neovim = s:dir . '/language-client-neovim.toml'
 
@@ -88,6 +89,8 @@ if dein#load_state(s:dein_dir)
 	call dein#load_toml(s:vim_fugitive)
 	call dein#load_toml(s:vim_gitgutter)
 
+	call dein#load_toml(s:denops_vim)
+
 	call dein#end()
   call dein#save_state()
 endif
@@ -103,7 +106,7 @@ syntax enable
 
 
 inoremap <silent> jj <ESC>
-tnoremap <silent> jj <C-\><C-n>:wq
+tnoremap <silent> qq <C-\><C-n>:wq<CR>
 
 " inoremap <silent><C-l> <Del>
 
@@ -138,9 +141,9 @@ set noshowmode
 set ambiwidth=single
 set hidden
 set guicursor=n-v-c:block,i-r:hor20
-set cursorline
-autocmd ColorScheme * highlight CursorLine  ctermfg=None ctermbg=240
-autocmd ColorScheme * highlight Comment  ctermfg=246
+" set cursorline
+" autocmd ColorScheme * highlight CursorLine  ctermfg=None ctermbg=240
+" autocmd ColorScheme * highlight Comment  ctermfg=246
 set updatetime=50
 set ttyfast
 
