@@ -106,7 +106,7 @@ syntax enable
 
 
 inoremap <silent> jj <ESC>
-tnoremap <silent> qq <C-\><C-n>:wq<CR>
+tnoremap <silent> JJ <C-\><C-n>
 
 " inoremap <silent><C-l> <Del>
 
