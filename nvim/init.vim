@@ -200,7 +200,7 @@ inoremap <Right> <Nop>
 inoremap <Left> <Nop>
 inoremap <BS> <Nop>
 
-nmap j g
+nmap j gj
 nmap k gk
 
 let g:python3_host_prog = '/root/.asdf/installs/python/3.9.9/bin/python'
