@@ -25,6 +25,7 @@ let s:vim_quickrun       = s:toml_dir . '/vim-quickrun.toml'
 let s:vimproc            = s:toml_dir . '/vimproc.toml'
 let s:vim_easy_align     = s:toml_dir . '/vim-easy-align.toml'
 let s:coc_nvim           = s:toml_dir . '/coc-nvim.toml'
+let s:nvim_cmp           = s:toml_dir . '/nvim_cmp.toml'
 let s:nvim_jdtls         = s:toml_dir . '/nvim-jdtls.toml'
 let s:tabnine_vim        = s:toml_dir . '/tabnine-vim.toml'
 let s:vdebug             = s:toml_dir . '/vdebug.toml'
@@ -55,7 +56,8 @@ if dein#load_state(s:dein_dir)
 	call dein#load_toml(s:vim_hug_neovim_rpc)
 	call dein#load_toml(s:nvim_yarp)
 
-	call dein#load_toml(s:coc_nvim)
+	" call dein#load_toml(s:coc_nvim)
+	call dein#load_toml(s:nvim_cmp)
 	call dein#load_toml(s:ale)
 
 	call dein#load_toml(s:defx_nvim)
@@ -89,7 +91,7 @@ if dein#load_state(s:dein_dir)
 	call dein#load_toml(s:vim_fugitive)
 	call dein#load_toml(s:vim_gitgutter)
 
-	call dein#load_toml(s:denops_vim)
+	" call dein#load_toml(s:denops_vim)
 
 	call dein#end()
   call dein#save_state()
@@ -199,8 +201,5 @@ inoremap <Down> <Nop>
 inoremap <Right> <Nop>
 inoremap <Left> <Nop>
 inoremap <BS> <Nop>
-
-nmap j gj
-nmap k gk
 
 let g:python3_host_prog = '/root/.asdf/installs/python/3.9.9/bin/python'
