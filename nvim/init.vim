@@ -56,8 +56,8 @@ if dein#load_state(s:dein_dir)
 	call dein#load_toml(s:vim_hug_neovim_rpc)
 	call dein#load_toml(s:nvim_yarp)
 
-	" call dein#load_toml(s:coc_nvim)
-	call dein#load_toml(s:nvim_cmp)
+	call dein#load_toml(s:coc_nvim)
+	" call dein#load_toml(s:nvim_cmp)
 	call dein#load_toml(s:ale)
 
 	call dein#load_toml(s:defx_nvim)

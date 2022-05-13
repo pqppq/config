@@ -8,6 +8,7 @@ export EDITOR=vim
 
 alias v='nvim'
 alias fd='fdfind'
+alias s='screen'
 
 source "$HOME/.cargo/env"
 export XDG_CONFIG_HOME=~/repository/config
