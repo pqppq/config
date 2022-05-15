@@ -207,5 +207,6 @@ hook_add = '''
 	" Resume latest coc list.
 	" nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>"
 
+	autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 
 '''
