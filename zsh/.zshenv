@@ -1,9 +1,3 @@
-
-######################################################################
-# path envc setup                                                    #
-######################################################################
-#
-
 export EDITOR=vim
 
 alias v='nvim'
@@ -16,7 +10,7 @@ export XDG_CONFIG_HOME=~/repository/config
 export GRADLE_HOME=/opt/gradle/latest
 export GRADLE_USER_HOME=/root/.gradle
 
-export G011MODULE=on
+# export G011MODULE=on
 
 export LD_LIBRARY_PATH=/usr/local/clang_9.0.0/lib
 
