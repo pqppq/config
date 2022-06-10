@@ -41,6 +41,7 @@ let s:vim_fugitive       = s:toml_dir . '/vim-fugitive.toml'
 let s:vim_gitgutter      = s:toml_dir . '/vim-gitgutter.toml'
 let s:vim_repeat         = s:toml_dir . '/vim-repeat.toml'
 let s:denops_vim         = s:toml_dir . '/denops-vim.toml'
+let s:copilot_vim         = s:toml_dir . '/copilot-vim.toml'
 " let s:deoplete_nvim = s:dir . '/deoplete-nvim.toml'
 " let s:language_client_neovim = s:dir . '/language-client-neovim.toml'
 
@@ -59,6 +60,7 @@ if dein#load_state(s:dein_dir)
 	call dein#load_toml(s:coc_nvim)
 	" call dein#load_toml(s:nvim_cmp)
 	call dein#load_toml(s:ale)
+	call dein#load_toml(s:copilot_vim)
 
 	call dein#load_toml(s:defx_nvim)
 	call dein#load_toml(s:denite_nvim)
