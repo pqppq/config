@@ -185,7 +185,7 @@ set history=10000
 set shiftwidth=2
 set softtabstop=2
 
-set noswapfile
+# set noswapfile
 
 set clipboard+=unnamed
 
