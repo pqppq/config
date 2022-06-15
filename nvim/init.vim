@@ -50,41 +50,32 @@ set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state(s:dein_dir)
 	" call dein#load_toml(s:deoplete_nvim)
 	" call dein#load_toml(s:ultisnips)
+	" call dein#load_toml(s:denops_vim)
+	" call dein#load_toml(s:nvim_cmp)
+	" call dein#load_toml(s:any_jump_vim)
 
   call dein#begin(s:dein_dir)
   call dein#add(s:dein_repo_dir)
-
 	call dein#load_toml(s:vim_hug_neovim_rpc)
 	call dein#load_toml(s:nvim_yarp)
-
 	call dein#load_toml(s:coc_nvim)
-	" call dein#load_toml(s:nvim_cmp)
 	call dein#load_toml(s:ale)
 	call dein#load_toml(s:copilot_vim)
-
 	call dein#load_toml(s:defx_nvim)
 	call dein#load_toml(s:denite_nvim)
-
 	call dein#load_toml(s:tagbar)
-
 	call dein#load_toml(s:vim_surround)
 	call dein#load_toml(s:vim_commentary)
 	call dein#load_toml(s:auto_pairs)
 	call dein#load_toml(s:echodoc_vim)
-
 	call dein#load_toml(s:vim_test)
 	call dein#load_toml(s:vimproc)
 	call dein#load_toml(s:vim_quickrun)
-
 	call dein#load_toml(s:vim_easy_align)
 	call dein#load_toml(s:vdebug)
-
 	call dein#load_toml(s:emmet_vim)
 	call dein#load_toml(s:vim_closetag)
-
 	call dein#load_toml(s:dispatch_vim)
-
-	" call dein#load_toml(s:any_jump_vim)
 	call dein#load_toml(s:vim_easy_motion)
 	call dein#load_toml(s:vim_repeat)
 	call dein#load_toml(s:ack_vim)
@@ -92,9 +83,6 @@ if dein#load_state(s:dein_dir)
 	call dein#load_toml(s:vim_dadbob)
 	call dein#load_toml(s:vim_fugitive)
 	call dein#load_toml(s:vim_gitgutter)
-
-	" call dein#load_toml(s:denops_vim)
-
 	call dein#end()
   call dein#save_state()
 endif
@@ -103,17 +91,8 @@ if dein#check_install()
   call dein#install()
 endif
 
-
-
-filetype plugin indent on
-syntax enable
-
-
 inoremap <silent> jj <ESC>
 tnoremap <silent> JJ <C-\><C-n>
-
-" inoremap <silent><C-l> <Del>
-
 nnoremap <silent> <C-n> :bn<CR>
 nnoremap <silent> <C-m> :bp<CR>
 nnoremap <silent> X     :bdelete<CR>
@@ -123,85 +102,58 @@ nnoremap <silent> gx    :tabclose<CR>
 nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>"
 nnoremap <silent> R :%s/<C-r>=expand('<cword>')<CR>//g<Left><Left>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Right> <Nop>
+nnoremap <Left> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Right> <Nop>
+inoremap <Left> <Nop>
+inoremap <BS> <Nop>
+
+filetype plugin indent on
+language C
+scriptencoding utf-8
+colorscheme tokyonight
 
 set path+=$PWD/**
 set inccommand=split
-
 set laststatus=2
-"set statusline=%t%m\ %<[%{&fenc!=''?&fenc:&enc}]\ [%{&ff}]\ %=[%Y]\ [%l/%L]
 set statusline=%t%m\ %=[%l/%L]
-
-language C
 set encoding=utf-8
 set fileencodings=utf-8
-scriptencoding utf-8
-
-colorscheme tokyonight
-
 set fileformat=unix
 set t_ut=""
 set nolist
 set noshowmode
 set ambiwidth=single
 set hidden
+set cmdheight=1
 set guicursor=n-v-c:block,i-r:hor20
-" set cursorline
-" autocmd ColorScheme * highlight CursorLine  ctermfg=None ctermbg=240
-" autocmd ColorScheme * highlight Comment  ctermfg=246
 set updatetime=50
 set ttyfast
-
 set nobackup
-
 set iskeyword+=-
-
 set virtualedit=block
 set backspace=indent,eol,start
-
-
 set wildmenu
 set wildmode=full
-
 set ignorecase
-
-set smartcase
-
 set smartcase
 set incsearch
-
 set nohlsearch
 set confirm
-
-
 set noerrorbells
-
+set visualbell t_vb=
 set showmatch matchtime=1
 set shellslash
 set display=lastline
 set tabstop=2
-
 set history=10000
-
 set shiftwidth=2
 set softtabstop=2
-
-# set noswapfile
-
+set noswapfile
 set clipboard+=unnamed
-
-syntax on
-
-set visualbell t_vb=
-
-nnoremap <Up> <Nop>
-nnoremap <Down> <Nop>
-nnoremap <Right> <Nop>
-nnoremap <Left> <Nop>
-
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Right> <Nop>
-inoremap <Left> <Nop>
-inoremap <BS> <Nop>
 
 let g:python3_host_prog = '/root/.asdf/installs/python/3.9.9/bin/python'
