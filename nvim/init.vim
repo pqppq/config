@@ -133,7 +133,11 @@ set cmdheight=1
 set guicursor=n-v-c:block,i-r:hor20
 set updatetime=50
 set ttyfast
-set nobackup
+set backup
+set backupdir=~/.vim/backup
+set backupext=.backup
+set undofile
+set undodir=~/.vim/undo
 set iskeyword+=-
 set virtualedit=block
 set backspace=indent,eol,start
