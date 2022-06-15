@@ -55,8 +55,5 @@
       "filetypes": ["rust"],
       "rootPatterns": ["Cargo.toml"]
     }
-  },
-  "go.goplsOptions": {
-    "completeUnimported": true
   }
 }
