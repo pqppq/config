@@ -10,7 +10,8 @@ export XDG_CONFIG_HOME=~/repository/config
 export GRADLE_HOME=/opt/gradle/latest
 export GRADLE_USER_HOME=/root/.gradle
 
-# export G011MODULE=on
+export GOPATH=~/downloads/go
+export GOBIN=$GOPATH/bin
 
 export LD_LIBRARY_PATH=/usr/local/clang_9.0.0/lib
 
@@ -25,7 +26,7 @@ export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
 export LIBGL_ALWAYS_INDIRECT=1
 export DENO_INSTALL="/root/.deno"
 
-export PATH=$USER_BIN:$GOPATH:$GO_TOOLS:$GRADLE_HOME/bin:$GRADLE_USER_HOME:$MAVEN_HOME:/root/.local/bin:$WIN32:$DISPLAY:$LIBGL_ALWAYS_INDIRECT:$CLANG9:$LD_LIBRARY_PATH:"$DENO_INSTALL/bin:$PATH"
+export PATH=$USER_BIN:$GOPATH:$GOBIN:$GRADLE_HOME/bin:$GRADLE_USER_HOME:$MAVEN_HOME:/root/.local/bin:$WIN32:$DISPLAY:$LIBGL_ALWAYS_INDIRECT:$CLANG9:$LD_LIBRARY_PATH:"$DENO_INSTALL/bin:$PATH"
 # eval "$(pyenv init -)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
