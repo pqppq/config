@@ -1,11 +1,11 @@
 ######################################################################
 # basic setup                                                        #
 ######################################################################
-# no beep
-setopt no_beep
-setopt nolistbeep
-unsetopt BEEP
-set bell-style none
+# # no beep
+# setopt no_beep
+# setopt nolistbeep
+# unsetopt BEEP
+# set bell-style none
 # remove dup commands from history
 setopt hist_ignore_space
 setopt SH_WORD_SPLIT
