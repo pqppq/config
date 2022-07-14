@@ -95,27 +95,24 @@ inoremap <silent> jj <ESC>
 tnoremap <silent> JJ <C-\><C-n>
 nnoremap <silent> <C-n> :bn<CR>
 nnoremap <silent> <C-m> :bp<CR>
-nnoremap <silent> X     :bdelete<CR>
-nnoremap <silent> gj    gT
-nnoremap <silent> gk    gt
-nnoremap <silent> gx    :tabclose<CR>
 nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>"
 nnoremap <silent> R :%s/<C-r>=expand('<cword>')<CR>//g<Left><Left>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-nnoremap <Up> <Nop>
-nnoremap <Down> <Nop>
+
+nnoremap <Up>    <Nop>
+nnoremap <Down>  <Nop>
 nnoremap <Right> <Nop>
-nnoremap <Left> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
+nnoremap <Left>  <Nop>
+inoremap <Up>    <Nop>
+inoremap <Down>  <Nop>
 inoremap <Right> <Nop>
-inoremap <Left> <Nop>
-inoremap <BS> <Nop>
+inoremap <Left>  <Nop>
+inoremap <BS>    <Nop>
 
 filetype plugin indent on
 language C
 scriptencoding utf-8
-colorscheme tokyonight
+colorscheme torte
 
 set path+=$PWD/**
 set inccommand=split
@@ -130,7 +127,7 @@ set noshowmode
 set ambiwidth=single
 set hidden
 set cmdheight=1
-set guicursor=n-v-c:block,i-r:hor20
+set guicursor=n-v-c:block-Cursor,i-r:hor20
 set updatetime=50
 set ttyfast
 set backup
@@ -159,5 +156,6 @@ set shiftwidth=2
 set softtabstop=2
 set noswapfile
 set clipboard+=unnamed
+hi MatchParen cterm=none ctermbg=blue ctermfg=white
 
 let g:python3_host_prog = '/root/.asdf/installs/python/3.9.9/bin/python'
