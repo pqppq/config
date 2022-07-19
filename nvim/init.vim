@@ -93,8 +93,8 @@ endif
 
 inoremap <silent> jj <ESC>
 tnoremap <silent> JJ <C-\><C-n>
-nnoremap <silent> <C-n> :bn<CR>
-nnoremap <silent> <C-m> :bp<CR>
+nnoremap <silent> <C-n> :bp<CR>
+nnoremap <silent> <C-m> :bn<CR>
 nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>"
 nnoremap <silent> R :%s/<C-r>=expand('<cword>')<CR>//g<Left><Left>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
@@ -112,7 +112,7 @@ inoremap <BS>    <Nop>
 filetype plugin indent on
 language C
 scriptencoding utf-8
-colorscheme torte
+colorscheme hybrid
 
 set path+=$PWD/**
 set inccommand=split
@@ -157,5 +157,8 @@ set softtabstop=2
 set noswapfile
 set clipboard+=unnamed
 hi MatchParen cterm=none ctermbg=blue ctermfg=white
+hi Normal ctermbg=none guibg=none
+hi StatusLine ctermbg=253 guifg=none guibg=none
+hi Comment ctermfg=255
 
 let g:python3_host_prog = '/root/.asdf/installs/python/3.9.9/bin/python'
