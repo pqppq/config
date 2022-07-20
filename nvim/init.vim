@@ -27,7 +27,6 @@ let s:vim_easy_align     = s:toml_dir . '/vim-easy-align.toml'
 let s:coc_nvim           = s:toml_dir . '/coc-nvim.toml'
 let s:nvim_cmp           = s:toml_dir . '/nvim_cmp.toml'
 let s:nvim_jdtls         = s:toml_dir . '/nvim-jdtls.toml'
-let s:tabnine_vim        = s:toml_dir . '/tabnine-vim.toml'
 let s:vdebug             = s:toml_dir . '/vdebug.toml'
 let s:emmet_vim          = s:toml_dir . '/emmet-vim.toml'
 let s:vim_closetag       = s:toml_dir . '/vim-closetag.toml'
@@ -51,7 +50,6 @@ if dein#load_state(s:dein_dir)
 	" call dein#load_toml(s:deoplete_nvim)
 	" call dein#load_toml(s:ultisnips)
 	" call dein#load_toml(s:denops_vim)
-	" call dein#load_toml(s:nvim_cmp)
 	" call dein#load_toml(s:any_jump_vim)
 	" call dein#load_toml(s:copilot_vim)
 
@@ -59,7 +57,8 @@ if dein#load_state(s:dein_dir)
   call dein#add(s:dein_repo_dir)
 	call dein#load_toml(s:vim_hug_neovim_rpc)
 	call dein#load_toml(s:nvim_yarp)
-	call dein#load_toml(s:coc_nvim)
+	call dein#load_toml(s:nvim_cmp)
+	" call dein#load_toml(s:coc_nvim)
 	call dein#load_toml(s:ale)
 	call dein#load_toml(s:defx_nvim)
 	call dein#load_toml(s:denite_nvim)
@@ -110,7 +109,7 @@ inoremap <Left>  <Nop>
 inoremap <BS>    <Nop>
 
 filetype plugin indent on
-language C
+language C.UTF-8
 scriptencoding utf-8
 colorscheme hybrid
 
