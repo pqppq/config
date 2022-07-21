@@ -17,141 +17,306 @@ repo = 'hrsh7th/cmp-path'
 repo = 'hrsh7th/cmp-cmdline'
 
 [[plugins]]
+repo = 'uga-rosa/cmp-dictionary'
+
+[[plugins]]
+repo = 'lukas-reineke/cmp-under-comparator'
+
+[[plugins]]
+repo = 'onsails/lspkind.nvim'
+
+[[plugins]]
 repo = 'neovim/nvim-lspconfig'
+hook_add = '''
+set completeopt=menu,menuone,noselect
+lua << EOF
+
+ 	local cmp = require("cmp")
+ 	local lsp_installer = require("nvim-lsp-installer")
+
+	local t = function(str)
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
+	end
+
+ 	-- [neovim/nvim-lspconfig]
+ 	-- Mappings.
+ 	-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+   -- for super-tab like mapping
+ 	local has_words_before = function()
+ 		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+ 		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
+ 	end
+ 	local opts = { noremap=true, silent=true, buffer=bufnr }
+ 	vim.keymap.set('n', '<C-b>', cmp.mapping.scroll_docs(-4), opts)
+ 	vim.keymap.set('n', '<C-f>', cmp.mapping.scroll_docs(4), opts)
+ 	vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+ 	-- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+ 	-- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+ 	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+ 	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+ 	vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+ 	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+ 	vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
+
+ 	-- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+ 	-- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+ 	-- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+ 	-- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+ 	-- vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+ 	-- vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+ 	-- vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
+ 	-- vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, opts)
+ 	-- vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, opts)
+ 	-- vim.keymap.set('n', '<space>wl', function()
+ 	-- 	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+ 	-- end, opts)
+
+ 	-- vim.keymap.set('n', '<C-Space>', cmp.mapping.complete(), opts)
+ 	-- vim.keymap.set('n', '<C-e>', cmp.mapping.abort(), opts)
+
+	vim.keymap.set('i', '<Tab>', function()
+				if cmp.visible() then
+					cmp.select_next_item()
+					-- cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
+				elseif has_words_before() then
+					cmp.complete()
+				else
+					vim.api.nvim_feedkeys(t('<Tab>'), 'n', true)
+				end
+			end, opts)
+	vim.keymap.set('i', '<S-Tab>', function()
+			if cmp.visible() then
+				cmp.select_prev_item()
+			else
+				vim.api.nvim_feedkeys(t('<S-Tab>'), 'n', true)
+			end
+		end, opts)
+
+  	-- [williamboman/nvim-lsp-installer]
+  	local server_configs = {
+  		-- [<LSP-SERVER-NAME>] = {
+  		-- CONFIGURATION HERE
+  		-- }
+  	}
+
+ 	lsp_installer.on_server_ready(function(server)
+ 		local opts = {}
+
+ 		-- (optional) Customize the options passed to the server
+     -- if server.name == "tsserver" then
+     --     opts.root_dir = function() ... end
+     -- end
+ 		if server_configs[server.name] then
+       opts = vim.tbl_deep_extend('force', opts, server_configs[server.name])
+     end
+
+ 		opts.capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+ 		-- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
+ 		server:setup(opts)
+ 		vim.cmd [[ do User LspAttachBuffers ]]
+ 	end)
+
+
+ 	-- [hrsh7th/nvim-cmp]
+
+	local types = require("cmp.types")
+	local comparator = require("cmp-under-comparator")
+
+ 	cmp.setup({
+		formatting = {
+			-- fields = {'abbr', 'kind', 'menu'},
+			format = require("lspkind").cmp_format({
+				with_text = true,
+				menu = {
+					buffer = "[Buffer]",
+					nvim_lsp = "[LSP]",
+					cmp_tabnine = "[TabNine]",
+					copilot = "[Copilot]",
+					luasnip = "[LuaSnip]",
+					nvim_lua = "[NeovimLua]",
+					latex_symbols = "[LaTeX]",
+					path = "[Path]",
+					omni = "[Omni]",
+					spell = "[Spell]",
+					emoji = "[Emoji]",
+					calc = "[Calc]",
+					rg = "[Rg]",
+					treesitter = "[TS]",
+					dictionary = "[Dictionary]",
+					mocword = "[mocword]",
+					cmdline_history = "[History]",
+				},
+			}),
+		},
+ 		snippet = {
+ 			-- REQUIRED - you must specify a snippet engine
+ 			expand = function(args)
+ 				-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+ 				-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+ 				-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+ 				-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+ 			end,
+ 		},
+ 		window = {
+ 			-- completion = cmp.config.window.bordered(),
+ 			-- documentation = cmp.config.window.bordered(),
+ 		},
+		sorting = {
+			comparators = {
+				cmp.config.compare.offset,
+				cmp.config.compare.exact,
+				cmp.config.compare.score,
+				comparator.under,
+				function(entry1, entry2)
+					local kind1 = entry1:get_kind()
+					kind1 = kind1 == types.lsp.CompletionItemKind.Text and 100 or kind1
+					local kind2 = entry2:get_kind()
+					kind2 = kind2 == types.lsp.CompletionItemKind.Text and 100 or kind2
+					if kind1 ~= kind2 then
+						if kind1 == types.lsp.CompletionItemKind.Snippet then
+							return false
+						end
+						if kind2 == types.lsp.CompletionItemKind.Snippet then
+							return true
+						end
+						local diff = kind1 - kind2
+						if diff < 0 then
+							return true
+						elseif diff > 0 then
+							return false
+						end
+					end
+				end,
+				cmp.config.compare.sort_text,
+				cmp.config.compare.length,
+				cmp.config.compare.order,
+			},
+		},
+ 		sources = cmp.config.sources({
+				{ name = 'nvim_lsp', priority = 100 },
+				-- { name = 'nvim_lsp_signature_help', priority = 90 },
+				{ name = 'path', priority = 80 },
+				-- { name = 'vsnip' }, -- For vsnip users.
+				-- { name = 'luasnip' }, -- For luasnip users.
+				-- { name = 'ultisnips' }, -- For ultisnips users.
+				-- { name = 'snippy' }, -- For snippy users.
+			}, {
+				{ name = 'buffer', priority = 50 },
+				{ name = 'dictionary', keyword_lengt = 2, priority = 10},
+			}),
+ 		mapping = {
+ 		},
+ 	})
+
+	require("cmp_dictionary").setup({
+			dic = {
+				["*"] = { "/usr/share/dict/words" }
+			},
+			-- The following are default values.
+			exact = 2,
+			first_case_insensitive = false,
+			document = false,
+			document_command = "wn %s -over",
+			async = false,
+			capacity = 5,
+			debug = false,
+		})
+
+ 	-- Set configuration for specific filetype.
+ 	cmp.setup.filetype('gitcommit', {
+ 		sources = cmp.config.sources({
+ 			{ name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+ 		}, {
+ 			{ name = 'buffer' },
+ 		})
+ 	})
+
+ 	-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+ 	cmp.setup.cmdline('/', {
+ 		mapping = cmp.mapping.preset.cmdline(),
+ 		sources = {
+ 			{ name = 'buffer' }
+ 		}
+ 	})
+
+ 	-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+ 	cmp.setup.cmdline(':', {
+ 		mapping = cmp.mapping.preset.cmdline(),
+ 		sources = cmp.config.sources({
+ 			{ name = 'path' }
+ 		}, {
+ 			{ name = 'cmdline' }
+ 		})
+ 	})
+
+EOF
+'''
+
+[[plugins]]
+repo = 'ray-x/lsp_signature.nvim'
 hook_add = '''
 lua << EOF
 
-	local cmp = require("cmp")
-	local lsp_installer = require("nvim-lsp-installer")
+ cfg = {
+  debug = false, -- set to true to enable debug logging
+  log_path = vim.fn.stdpath("cache") .. "/lsp_signature.log", -- log dir when debug is on
+  -- default is  ~/.cache/nvim/lsp_signature.log
+  verbose = false, -- show debug line number
 
-  -- for super-tab like mapping
-	local has_words_before = function()
-		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
-	end
+  bind = true, -- This is mandatory, otherwise border config won't get registered.
+               -- If you want to hook lspsaga or other signature handler, pls set to false
+  doc_lines = 10, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
+                 -- set to 0 if you DO NOT want any API comments be shown
+                 -- This setting only take effect in insert mode, it does not affect signature help in normal
+                 -- mode, 10 by default
 
-	-- [neovim/nvim-lspconfig]
-	-- Mappings.
-	-- See `:help vim.diagnostic.*` for documentation on any of the below functions
-	local opts = { noremap=true, silent=true, buffer=bufnr }
-	vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-	vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-	vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-	vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
-	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-	vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-	vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-	-- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-	-- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-	vim.keymap.set('n', '<space>wl', function()
-		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	end, opts)
-	vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-	vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-	vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
-	vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-	vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, opts)
+  max_height = 12, -- max height of signature floating_window
+  max_width = 80, -- max_width of signature floating_window
+  wrap = true, -- allow doc/signature text wrap inside floating_window, useful if your lsp return doc/sig is too long
 
-	vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, opts)
+  floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
 
-	vim.keymap.set('n', '<C-b>', cmp.mapping.scroll_docs(-4), opts)
-	vim.keymap.set('n', '<C-f>', cmp.mapping.scroll_docs(4), opts)
-	vim.keymap.set('n', '<C-Space>', cmp.mapping.complete(), opts)
-	vim.keymap.set('n', '<C-e>', cmp.mapping.abort(), opts)
-	--vim.keymap.set('n', '<CR>', cmp.mapping.confirm({select=true}), opts) -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-	--vim.keymap.set('i', '<Tab>', function(fallback)
-	--			if cmp.visible() then cmp.select_next_item()
-	--			elseif has_words_before() then cmp.complete()
-	--			else fallback() end
-	--		end, opts)
-	--vim.keymap.set('i', '<S-Tab>', function(fallback)
-	--		if cmp.visible() then cmp.select_prev_item()
-	--		else fallback() end
-	--	end, opts)
+  floating_window_above_cur_line = true, -- try to place the floating above the current line when possible Note:
+  -- will set to true when fully tested, set to false will use whichever side has more space
+  -- this setting will be helpful if you do not want the PUM and floating win overlap
 
+  floating_window_off_x = 1, -- adjust float windows x position.
+  floating_window_off_y = 0, -- adjust float windows y position. e.g -2 move window up 2 lines; 2 move down 2 lines
 
-	-- [williamboman/nvim-lsp-installer]
-	local server_configs = {
-		-- [<LSP-SERVER-NAME>] = {
-		-- CONFIGURATION HERE
-		-- }
-	}
+  close_timeout = 4000, -- close floating window after ms when laster parameter is entered
+  fix_pos = false,  -- set to true, the floating window will not auto-close until finish all parameters
+  hint_enable = true, -- virtual hint enable
+  hint_prefix = "🐼 ",  -- Panda for parameter, NOTE: for the terminal not support emoji, might crash
+  hint_scheme = "String",
+  hi_parameter = "LspSignatureActiveParameter", -- how your parameter will be highlight
+  handler_opts = {
+    border = "rounded"   -- double, rounded, single, shadow, none
+  },
 
-	lsp_installer.on_server_ready(function(server)
-		local opts = {}
+  always_trigger = false, -- sometime show signature on new line or in middle of parameter can be confusing, set it to false for #58
 
-		-- (optional) Customize the options passed to the server
-    -- if server.name == "tsserver" then
-    --     opts.root_dir = function() ... end
-    -- end
-		if server_configs[server.name] then
-      opts = vim.tbl_deep_extend('force', opts, server_configs[server.name])
-    end
+  auto_close_after = nil, -- autoclose signature float win after x sec, disabled if nil.
+  extra_trigger_chars = {}, -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
+  zindex = 200, -- by default it will be on top of all floating windows, set to <= 50 send it to bottom
 
-		opts.capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-		-- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
-		server:setup(opts)
-		vim.cmd [[ do User LspAttachBuffers ]]
-	end)
+  padding = '', -- character to pad on left and right of signature can be ' ', or '|'  etc
 
+  transparency = nil, -- disabled by default, allow floating win transparent value 1~100
+  shadow_blend = 36, -- if you using shadow as border use this set the opacity
+  shadow_guibg = 'Black', -- if you using shadow as border use this set the color e.g. 'Green' or '#121315'
+  timer_interval = 200, -- default timer check interval set to lower value if you want to reduce latency
+  toggle_key = nil, -- toggle signature on and off in insert mode,  e.g. toggle_key = '<M-x>'
 
-	-- [hrsh7th/nvim-cmp]
-	cmp.setup({
-		snippet = {
-			-- REQUIRED - you must specify a snippet engine
-			expand = function(args)
-				-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-				-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-				-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-				-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-			end,
-		},
-		window = {
-			-- completion = cmp.config.window.bordered(),
-			-- documentation = cmp.config.window.bordered(),
-		},
-		sources = cmp.config.sources({
-			{ name = 'path' },
-			{ name = 'buffer' },
-			{ name = 'nvim_lsp' },
-			-- { name = 'vsnip' }, -- For vsnip users.
-			-- { name = 'luasnip' }, -- For luasnip users.
-			-- { name = 'ultisnips' }, -- For ultisnips users.
-			-- { name = 'snippy' }, -- For snippy users.
-		}, {
-			{ name = 'buffer' },
-		})
-	})
+  select_signature_key = nil, -- cycle to next signature, e.g. '<M-n>' function overloading
+  move_cursor_key = nil, -- imap, use nvim_set_current_win to move cursor between current win and floating
+}
 
-	-- Set configuration for specific filetype.
-	cmp.setup.filetype('gitcommit', {
-		sources = cmp.config.sources({
-			{ name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-		}, {
-			{ name = 'buffer' },
-		})
-	})
+-- recommended:
+require'lsp_signature'.setup(cfg) -- no need to specify bufnr if you don't use toggle_key
 
-	-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-	cmp.setup.cmdline('/', {
-		mapping = cmp.mapping.preset.cmdline(),
-		sources = {
-			{ name = 'buffer' }
-		}
-	})
-
-	-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-	cmp.setup.cmdline(':', {
-		mapping = cmp.mapping.preset.cmdline(),
-		sources = cmp.config.sources({
-			{ name = 'path' }
-		}, {
-			{ name = 'cmdline' }
-		})
-	})
+-- You can also do this inside lsp on_attach
+-- note: on_attach deprecated
+require'lsp_signature'.on_attach(cfg, bufnr) -- no need to specify bufnr if you don't use toggle_key
 
 EOF
-
 '''
