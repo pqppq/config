@@ -60,16 +60,16 @@ lua << EOF
 	vim.keymap.set('n', '<C-f>', cmp.mapping.scroll_docs(4), opts)
 	vim.keymap.set('n', '<C-Space>', cmp.mapping.complete(), opts)
 	vim.keymap.set('n', '<C-e>', cmp.mapping.abort(), opts)
-	vim.keymap.set('n', '<CR>', cmp.mapping.confirm({select=true}), opts) -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-	vim.keymap.set('i', '<Tab>', function(fallback)
-				if cmp.visible() then cmp.select_next_item()
-				elseif has_words_before() then cmp.complete()
-				else fallback() end
-			end, opts)
-	vim.keymap.set('i', '<S-Tab>', function(fallback)
-			if cmp.visible() then cmp.select_prev_item()
-			else fallback() end
-		end, opts)
+	--vim.keymap.set('n', '<CR>', cmp.mapping.confirm({select=true}), opts) -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+	--vim.keymap.set('i', '<Tab>', function(fallback)
+	--			if cmp.visible() then cmp.select_next_item()
+	--			elseif has_words_before() then cmp.complete()
+	--			else fallback() end
+	--		end, opts)
+	--vim.keymap.set('i', '<S-Tab>', function(fallback)
+	--		if cmp.visible() then cmp.select_prev_item()
+	--		else fallback() end
+	--	end, opts)
 
 
 	-- [williamboman/nvim-lsp-installer]
@@ -102,7 +102,7 @@ lua << EOF
 		snippet = {
 			-- REQUIRED - you must specify a snippet engine
 			expand = function(args)
-				vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+				-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
 				-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
 				-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
 				-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
@@ -113,6 +113,8 @@ lua << EOF
 			-- documentation = cmp.config.window.bordered(),
 		},
 		sources = cmp.config.sources({
+			{ name = 'path' },
+			{ name = 'buffer' },
 			{ name = 'nvim_lsp' },
 			-- { name = 'vsnip' }, -- For vsnip users.
 			-- { name = 'luasnip' }, -- For luasnip users.
