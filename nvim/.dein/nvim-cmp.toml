@@ -154,7 +154,7 @@ lua << EOF
 	local comparator = require("cmp-under-comparator")
 
  	cmp.setup({
-	 icon	preselect = cmp.PreselectMode.None,
+		preselect = cmp.PreselectMode.None,
 		formatting = {
 			-- fields = {'abbr', 'kind', 'menu'},
 			format = require("lspkind").cmp_format({
