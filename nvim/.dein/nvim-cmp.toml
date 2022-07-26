@@ -33,6 +33,7 @@ lua << EOF
 
  	local cmp = require("cmp")
  	local lsp_installer = require("nvim-lsp-installer")
+	local nvim_lsp = require("lspconfig")
 
 	local t = function(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
@@ -46,7 +47,7 @@ lua << EOF
  		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
  		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
  	end
- 	local opts = { noremap=true, silent=true, buffer=bufnr }
+ 	local opts = { noremap=true, silent=true }
  	vim.keymap.set('n', '<C-b>', cmp.mapping.scroll_docs(-4), opts)
  	vim.keymap.set('n', '<C-f>', cmp.mapping.scroll_docs(4), opts)
  	vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
@@ -123,6 +124,7 @@ lua << EOF
 	local comparator = require("cmp-under-comparator")
 
  	cmp.setup({
+	 icon	preselect = cmp.PreselectMode.None,
 		formatting = {
 			-- fields = {'abbr', 'kind', 'menu'},
 			format = require("lspkind").cmp_format({
