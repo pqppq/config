@@ -91,9 +91,9 @@ if dein#check_install()
 endif
 
 inoremap <silent> jj <ESC>
-tnoremap <silent> JJ <C-\><C-n>
-nnoremap <silent> <C-n> :bp<CR>
-nnoremap <silent> <C-m> :bn<CR>
+" tnoremap <silent> JJ <C-\><C-n>
+nnoremap <silent> ' :bn<CR>
+nnoremap <silent> " :bp<CR>
 nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>"
 nnoremap <silent> R :%s/<C-r>=expand('<cword>')<CR>//g<Left><Left>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
