@@ -232,16 +232,17 @@ lua << EOF
 			},
 		},
  		sources = cmp.config.sources({
-				{ name = 'nvim_lsp', priority = 100 },
+				{ name = 'nvim_lsp', max_item_count=20, priority = 100 },
 				-- { name = 'nvim_lsp_signature_help', priority = 90 },
-				{ name = 'path', priority = 80 },
+				{ name = 'path', max_item_count=5, priority = 80 },
 				-- { name = 'vsnip' }, -- For vsnip users.
 				-- { name = 'luasnip' }, -- For luasnip users.
 				-- { name = 'ultisnips' }, -- For ultisnips users.
 				-- { name = 'snippy' }, -- For snippy users.
 			}, {
-				{ name = 'buffer', priority = 50 },
-				{ name = 'dictionary', keyword_lengt = 2, priority = 10},
+				{ name = 'buffer', max_item_count=5, priority = 50 },
+				{ name = 'path', max_item_count=5 ,priority = 40 },
+				{ name = 'dictionary', keyword_lengt = 2, max_item_count=5, priority = 10},
 			}),
  		mapping = {
  		},
@@ -274,7 +275,7 @@ lua << EOF
  	cmp.setup.cmdline('/', {
  		mapping = cmp.mapping.preset.cmdline(),
  		sources = {
- 			{ name = 'buffer' }
+ 			{ name = 'buffer', max_item_count=10 }
  		}
  	})
 
