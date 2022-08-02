@@ -94,11 +94,6 @@ lua << EOF
 		end, opts)
 
   	-- [williamboman/nvim-lsp-installer]
-  	local server_configs = {
-  		-- [<LSP-SERVER-NAME>] = {
-  		-- CONFIGURATION HERE
-  		-- }
-  	}
 
 
  	-- lsp_installer.on_server_ready(function(server)
