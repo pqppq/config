@@ -19,7 +19,7 @@ hook_add = '''
   \ 'buffer_name': 'exproler',
   \ 'toggle': 1,
   \ 'resume': 1,
-  \ 'columns': 'indent:icons:filename:mark',
+  \ 'columns': 'indent:icons:space:filename:mark',
   \ })
 
 	" 'columns': 'indent:icons:filename:mark',
@@ -106,7 +106,8 @@ hook_add = '''
 
 '''
 
-[[plugins]] repo = 'kristijanhusak/defx-icons'
+[[plugins]]
+repo = 'kristijanhusak/defx-icons'
 hook_add = '''
 
 '''
