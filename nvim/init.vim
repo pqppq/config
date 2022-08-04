@@ -3,8 +3,9 @@ if &compatible
   set nocompatible
 endif
 
-let s:dein_dir           = '~/.cache/dein'
-let s:dein_repo_dir      = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+let s:dein_dir           = '~/.cache/dein/repos/github.com'
+let s:dein_repo_dir      = s:dein_dir . '/Shougo/dein.vim'
+execute 'set runtimepath+=' . s:dein_repo_dir
 
 let s:toml_dir           = '~/repository/config/nvim/.dein/'
 
@@ -14,24 +15,18 @@ let s:vim_surround       = s:toml_dir . 'vim-surround.toml'
 let s:auto_pairs         = s:toml_dir . 'auto-pairs.toml'
 let s:tagbar             = s:toml_dir . 'tagbar.toml'
 let s:vim_commentary     = s:toml_dir . 'vim-commentary.toml'
-let s:vim_hug_neovim_rpc = s:toml_dir . 'vim-hug-neovim-rpc.toml'
-let s:nvim_yarp          = s:toml_dir . 'nvim-yarp.toml'
 let s:vim_devicons       = s:toml_dir . 'vim-devicons.toml'
 let s:echodoc_vim        = s:toml_dir . 'echodoc-vim.toml'
 let s:ale                = s:toml_dir . 'ale.toml'
 let s:vim_test           = s:toml_dir . 'vim-test.toml'
 let s:ultisnips          = s:toml_dir . 'ultisnips.toml'
 let s:vim_quickrun       = s:toml_dir . 'vim-quickrun.toml'
-let s:vimproc            = s:toml_dir . 'vimproc.toml'
 let s:vim_easy_align     = s:toml_dir . 'vim-easy-align.toml'
 let s:coc_nvim           = s:toml_dir . 'coc-nvim.toml'
 let s:nvim_cmp           = s:toml_dir . 'nvim-cmp.toml'
-let s:nvim_jdtls         = s:toml_dir . 'nvim-jdtls.toml'
-let s:vdebug             = s:toml_dir . 'vdebug.toml'
 let s:emmet_vim          = s:toml_dir . 'emmet-vim.toml'
 let s:vim_closetag       = s:toml_dir . 'vim-closetag.toml'
 let s:vim_easy_motion    = s:toml_dir . 'vim-easy-motion.toml'
-let s:dispatch_vim       = s:toml_dir . 'dispatch-vim.toml'
 let s:ack_vim            = s:toml_dir . 'ack-vim.toml'
 let s:vim_dadbob         = s:toml_dir . 'vim-dadbob.toml'
 let s:fzf_vim            = s:toml_dir . 'fzf-vim.toml'
@@ -40,52 +35,56 @@ let s:vim_fugitive       = s:toml_dir . 'vim-fugitive.toml'
 let s:vim_gitgutter      = s:toml_dir . 'vim-gitgutter.toml'
 let s:vim_repeat         = s:toml_dir . 'vim-repeat.toml'
 let s:denops_vim         = s:toml_dir . 'denops-vim.toml'
-let s:copilot_vim        = s:toml_dir . 'copilot-vim.toml'
-let s:calendar_vim			 = s:toml_dir . 'calendar-vim.toml'
-" let s:deoplete_nvim = s:dir . '/deoplete-nvim.toml'
+let s:luasnip            = s:toml_dir . 'luasnip.toml'
+let s:nvim_autopairs     = s:toml_dir . 'nvim-autopairs.toml'
+" let s:deoplete_nvim      = s:toml_dir . '/deoplete-nvim.toml'
+" let s:dispatch_vim       = s:toml_dir . 'dispatch-vim.toml'
+" let s:nvim_jdtls         = s:toml_dir . 'nvim-jdtls.toml'
+" let s:vim_hug_neovim_rpc = s:toml_dir . 'vim-hug-neovim-rpc.toml'
+" let s:copilot_vim        = s:toml_dir . 'copilot-vim.toml'
+" let s:vdebug             = s:toml_dir . 'vdebug.toml'
 " let s:language_client_neovim = s:dir . '/language-client-neovim.toml'
 
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 if dein#load_state(s:dein_dir)
+	call dein#begin(s:dein_dir)
+  call dein#add(s:dein_repo_dir)
+
 	" call dein#load_toml(s:deoplete_nvim)
 	" call dein#load_toml(s:ultisnips)
 	" call dein#load_toml(s:denops_vim)
 	" call dein#load_toml(s:any_jump_vim)
 	" call dein#load_toml(s:copilot_vim)
+	" call dein#load_toml(s:vim_hug_neovim_rpc)
+	call dein#load_toml(s:echodoc_vim)
+	" call dein#load_toml(s:vdebug)
+	" call dein#load_toml(s:dispatch_vim)
+	" call dein#load_toml(s:fzf_vim)
 
-  call dein#begin(s:dein_dir)
-  call dein#add(s:dein_repo_dir)
-	call dein#load_toml(s:vim_hug_neovim_rpc)
-	call dein#load_toml(s:nvim_yarp)
-	call dein#load_toml(s:nvim_cmp)
-	" call dein#load_toml(s:coc_nvim)
 	call dein#load_toml(s:ale)
 	call dein#load_toml(s:defx_nvim)
 	call dein#load_toml(s:denite_nvim)
 	call dein#load_toml(s:tagbar)
 	call dein#load_toml(s:vim_surround)
 	call dein#load_toml(s:vim_commentary)
-	call dein#load_toml(s:auto_pairs)
-	" call dein#load_toml(s:echodoc_vim)
+	call dein#load_toml(s:nvim_autopairs)
+	call dein#load_toml(s:luasnip)
+	call dein#load_toml(s:nvim_cmp)
+	" call dein#load_toml(s:coc_nvim)
 	call dein#load_toml(s:vim_test)
-	call dein#load_toml(s:vimproc)
 	call dein#load_toml(s:vim_quickrun)
 	call dein#load_toml(s:vim_easy_align)
-	call dein#load_toml(s:vdebug)
 	call dein#load_toml(s:emmet_vim)
 	call dein#load_toml(s:vim_closetag)
-	call dein#load_toml(s:dispatch_vim)
 	call dein#load_toml(s:vim_easy_motion)
 	call dein#load_toml(s:vim_repeat)
 	call dein#load_toml(s:ack_vim)
-	call dein#load_toml(s:fzf_vim)
 	call dein#load_toml(s:vim_dadbob)
 	call dein#load_toml(s:vim_fugitive)
 	call dein#load_toml(s:vim_gitgutter)
-	call dein#load_toml(s:calendar_vim)
+
 	call dein#end()
-  call dein#save_state()
+	call dein#save_state()
 endif
 
 if dein#check_install()
@@ -108,7 +107,8 @@ inoremap <Up>    <Nop>
 inoremap <Down>  <Nop>
 inoremap <Right> <Nop>
 inoremap <Left>  <Nop>
-inoremap <BS>    <Nop>
+" inoremap <BS>    <Nop>
+inoremap <C-o> ()<Left>
 
 filetype plugin indent on
 language C.UTF-8
