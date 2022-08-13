@@ -17,7 +17,7 @@ let s:tagbar             = s:toml_dir . 'tagbar.toml'
 let s:vim_commentary     = s:toml_dir . 'vim-commentary.toml'
 let s:vim_devicons       = s:toml_dir . 'vim-devicons.toml'
 let s:echodoc_vim        = s:toml_dir . 'echodoc-vim.toml'
-let s:ale                = s:toml_dir . 'ale.toml'
+" let s:ale                = s:toml_dir . 'ale.toml'
 let s:vim_test           = s:toml_dir . 'vim-test.toml'
 let s:ultisnips          = s:toml_dir . 'ultisnips.toml'
 let s:vim_quickrun       = s:toml_dir . 'vim-quickrun.toml'
@@ -37,6 +37,8 @@ let s:vim_repeat         = s:toml_dir . 'vim-repeat.toml'
 let s:denops_vim         = s:toml_dir . 'denops-vim.toml'
 let s:luasnip            = s:toml_dir . 'luasnip.toml'
 let s:nvim_autopairs     = s:toml_dir . 'nvim-autopairs.toml'
+let s:nightfox           = s:toml_dir . 'nightfox-nvim.toml'
+let s:iron_nvim					 = s:toml_dir . 'iron-nvim.toml'
 " let s:deoplete_nvim      = s:toml_dir . '/deoplete-nvim.toml'
 " let s:dispatch_vim       = s:toml_dir . 'dispatch-vim.toml'
 " let s:nvim_jdtls         = s:toml_dir . 'nvim-jdtls.toml'
@@ -61,7 +63,7 @@ if dein#load_state(s:dein_dir)
 	" call dein#load_toml(s:dispatch_vim)
 	" call dein#load_toml(s:fzf_vim)
 
-	call dein#load_toml(s:ale)
+	" call dein#load_toml(s:ale)
 	call dein#load_toml(s:defx_nvim)
 	call dein#load_toml(s:denite_nvim)
 	call dein#load_toml(s:tagbar)
@@ -111,11 +113,13 @@ inoremap <Right> <Nop>
 inoremap <Left>  <Nop>
 " inoremap <BS>    <Nop>
 inoremap <C-o> ()<Left>
+nnoremap dw daw
 
 filetype plugin indent on
 language C.UTF-8
 scriptencoding utf-8
-colorscheme hybrid
+" colorscheme hybrid
+colorscheme duskfox
 
 set path+=$PWD/**
 set inccommand=split
