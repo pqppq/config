@@ -1,5 +1,6 @@
 [[plugins]]
 repo = 'alvan/vim-closetag'
+on_ft = ['html', 'xhtml', 'phtml', 'xml', 'jsx', 'tsx', 'vue']
 hook_add = '''
 
 	" filenames like *.xml, *.html, *.xhtml, ...
