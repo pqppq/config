@@ -82,6 +82,8 @@ if dein#load_state(s:dein_dir)
 	call dein#load_toml(s:vim_dadbob)
 	call dein#load_toml(s:vim_fugitive)
 	call dein#load_toml(s:vim_gitgutter)
+	call dein#load_toml(s:nightfox)
+	call dein#load_toml(s:iron_nvim)
 
 	call dein#end()
 	call dein#save_state()
