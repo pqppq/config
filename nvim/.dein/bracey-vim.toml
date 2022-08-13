@@ -1,6 +1,0 @@
-[[plugins]]
-repo = 'turbio/bracey.vim'
-hool_add = '''
-	let g:bracey_auto_start_browser = 0
-	let g:bracey_auto_start_server = 0
-'''
