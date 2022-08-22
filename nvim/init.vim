@@ -22,10 +22,10 @@ let s:vim_test           = s:toml_dir . 'vim-test.toml'
 let s:ultisnips          = s:toml_dir . 'ultisnips.toml'
 let s:vim_quickrun       = s:toml_dir . 'vim-quickrun.toml'
 let s:vim_easy_align     = s:toml_dir . 'vim-easy-align.toml'
-let s:coc_nvim           = s:toml_dir . 'coc-nvim.toml'
+" let s:coc_nvim           = s:toml_dir . 'coc-nvim.toml'
 let s:nvim_cmp           = s:toml_dir . 'nvim-cmp.toml'
 let s:emmet_vim          = s:toml_dir . 'emmet-vim.toml'
-let s:vim_closetag       = s:toml_dir . 'vim-closetag.toml'
+" let s:vim_closetag       = s:toml_dir . 'vim-closetag.toml'
 let s:vim_easy_motion    = s:toml_dir . 'vim-easy-motion.toml'
 let s:ack_vim            = s:toml_dir . 'ack-vim.toml'
 let s:vim_dadbob         = s:toml_dir . 'vim-dadbob.toml'
@@ -38,7 +38,6 @@ let s:denops_vim         = s:toml_dir . 'denops-vim.toml'
 let s:luasnip            = s:toml_dir . 'luasnip.toml'
 let s:nvim_autopairs     = s:toml_dir . 'nvim-autopairs.toml'
 let s:nightfox           = s:toml_dir . 'nightfox-nvim.toml'
-let s:iron_nvim					 = s:toml_dir . 'iron-nvim.toml'
 " let s:deoplete_nvim      = s:toml_dir . '/deoplete-nvim.toml'
 " let s:dispatch_vim       = s:toml_dir . 'dispatch-vim.toml'
 " let s:nvim_jdtls         = s:toml_dir . 'nvim-jdtls.toml'
@@ -77,7 +76,7 @@ if dein#load_state(s:dein_dir)
 	call dein#load_toml(s:vim_quickrun)
 	call dein#load_toml(s:vim_easy_align)
 	call dein#load_toml(s:emmet_vim)
-	call dein#load_toml(s:vim_closetag)
+	" call dein#load_toml(s:vim_closetag)
 	call dein#load_toml(s:vim_easy_motion)
 	call dein#load_toml(s:vim_repeat)
 	call dein#load_toml(s:ack_vim)
@@ -85,7 +84,6 @@ if dein#load_state(s:dein_dir)
 	call dein#load_toml(s:vim_fugitive)
 	call dein#load_toml(s:vim_gitgutter)
 	call dein#load_toml(s:nightfox)
-	call dein#load_toml(s:iron_nvim)
 
 	call dein#end()
 	call dein#save_state()
@@ -96,7 +94,7 @@ if dein#check_install()
 endif
 
 inoremap <silent> jj <ESC>
-" tnoremap <silent> JJ <C-\><C-n>
+tnoremap <silent> JJ <C-\><C-n>
 nnoremap <silent> ' :bn<CR>
 nnoremap <silent> " :bp<CR>
 nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>"
