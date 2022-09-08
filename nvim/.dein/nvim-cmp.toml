@@ -173,6 +173,7 @@ lua << EOF
 	})
 
 	-- map mason's formatter and linter for null-ls
+ vim.diagnostic.config({ virtual_text = false })
 	local mason_package = require("mason-core.package")
 	local mason_registry = require("mason-registry")
 	local null_ls = require("null-ls")
@@ -352,10 +353,10 @@ lua << EOF
  		})
  	})
 
-	-- auto-pairs
-	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-	-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
-	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+ -- -- auto-pairs
+ -- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+ -- -- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
+ -- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 EOF
 '''

@@ -32,12 +32,14 @@ let s:vim_dadbob         = s:toml_dir . 'vim-dadbob.toml'
 let s:fzf_vim            = s:toml_dir . 'fzf-vim.toml'
 let s:any_jump_vim       = s:toml_dir . 'any-jaump-vim.toml'
 let s:vim_fugitive       = s:toml_dir . 'vim-fugitive.toml'
-let s:vim_gitgutter      = s:toml_dir . 'vim-gitgutter.toml'
+" let s:vim_gitgutter      = s:toml_dir . 'vim-gitgutter.toml'
+let s:gitsigns_nvim			 = s:toml_dir . 'gitsigns-nvim.toml'
 let s:vim_repeat         = s:toml_dir . 'vim-repeat.toml'
 let s:denops_vim         = s:toml_dir . 'denops-vim.toml'
 let s:luasnip            = s:toml_dir . 'luasnip.toml'
 let s:nvim_autopairs     = s:toml_dir . 'nvim-autopairs.toml'
 let s:nightfox           = s:toml_dir . 'nightfox-nvim.toml'
+let s:trouble_nvim       = s:toml_dir . 'trouble-nvim.toml'
 " let s:deoplete_nvim      = s:toml_dir . '/deoplete-nvim.toml'
 " let s:dispatch_vim       = s:toml_dir . 'dispatch-vim.toml'
 " let s:nvim_jdtls         = s:toml_dir . 'nvim-jdtls.toml'
@@ -71,6 +73,7 @@ if dein#load_state(s:dein_dir)
 	call dein#load_toml(s:nvim_autopairs)
 	call dein#load_toml(s:luasnip)
 	call dein#load_toml(s:nvim_cmp)
+	call dein#load_toml(s:trouble_nvim)
 	" call dein#load_toml(s:coc_nvim)
 	call dein#load_toml(s:vim_test)
 	call dein#load_toml(s:vim_quickrun)
@@ -82,7 +85,8 @@ if dein#load_state(s:dein_dir)
 	call dein#load_toml(s:ack_vim)
 	call dein#load_toml(s:vim_dadbob)
 	call dein#load_toml(s:vim_fugitive)
-	call dein#load_toml(s:vim_gitgutter)
+	" call dein#load_toml(s:vim_gitgutter)
+	call dein#load_toml(s:gitsigns_nvim)
 	call dein#load_toml(s:nightfox)
 
 	call dein#end()
@@ -162,10 +166,15 @@ set softtabstop=2
 set noswapfile
 set clipboard+=unnamed
 set mouse=
-set ttymouse=
+set signcolumn=yes:2
 hi MatchParen cterm=none ctermbg=blue ctermfg=white
 hi Normal ctermbg=none guibg=none
 hi StatusLine ctermbg=253 guifg=none guibg=none
 hi Comment ctermfg=255
+
+sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=
+sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=
+sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=
+sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=
 
 let g:python3_host_prog = '/root/.asdf/installs/python/3.9.9/bin/python'
