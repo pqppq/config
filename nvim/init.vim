@@ -40,6 +40,9 @@ let s:luasnip            = s:toml_dir . 'luasnip.toml'
 let s:nvim_autopairs     = s:toml_dir . 'nvim-autopairs.toml'
 let s:nightfox           = s:toml_dir . 'nightfox-nvim.toml'
 let s:trouble_nvim       = s:toml_dir . 'trouble-nvim.toml'
+let s:plenary_nvim			 = s:toml_dir . 'plenary-nvim.toml'
+let s:nvim_treesitter	   = s:toml_dir . 'nvim-treesitter.toml'
+let s:telescope_nvim					 = s:toml_dir . 'telescope-nvim.toml'
 " let s:deoplete_nvim      = s:toml_dir . '/deoplete-nvim.toml'
 " let s:dispatch_vim       = s:toml_dir . 'dispatch-vim.toml'
 " let s:nvim_jdtls         = s:toml_dir . 'nvim-jdtls.toml'
@@ -59,12 +62,15 @@ if dein#load_state(s:dein_dir)
 	" call dein#load_toml(s:any_jump_vim)
 	" call dein#load_toml(s:copilot_vim)
 	" call dein#load_toml(s:vim_hug_neovim_rpc)
-	call dein#load_toml(s:echodoc_vim)
+	" call dein#load_toml(s:echodoc_vim)
 	" call dein#load_toml(s:vdebug)
 	" call dein#load_toml(s:dispatch_vim)
 	" call dein#load_toml(s:fzf_vim)
 
 	" call dein#load_toml(s:ale)
+	call dein#load_toml(s:plenary_nvim)
+	call dein#load_toml(s:nvim_treesitter)
+	call dein#load_toml(s:telescope_nvim)
 	call dein#load_toml(s:defx_nvim)
 	call dein#load_toml(s:denite_nvim)
 	call dein#load_toml(s:tagbar)
@@ -109,6 +115,8 @@ nnoremap <Up>    <Nop>
 nnoremap <Down>  <Nop>
 nnoremap <Right> <Nop>
 nnoremap <Left>  <Nop>
+nnoremap <BS>  <Nop>
+nnoremap <Del>  <Nop>
 inoremap <Up>    <Nop>
 inoremap <Down>  <Nop>
 inoremap <Right> <Nop>
@@ -166,12 +174,12 @@ set softtabstop=2
 set noswapfile
 set clipboard+=unnamed
 set mouse=
-set signcolumn=yes:2
 hi MatchParen cterm=none ctermbg=blue ctermfg=white
 hi Normal ctermbg=none guibg=none
 hi StatusLine ctermbg=253 guifg=none guibg=none
 hi Comment ctermfg=255
 
+set signcolumn=auto:2
 sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=
 sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=
 sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=
