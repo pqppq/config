@@ -35,9 +35,6 @@ repo = 'saadparwaiz1/cmp_luasnip'
 repo = 'jose-elias-alvarez/null-ls.nvim'
 
 [[plugins]]
-repo = 'nvim-lua/plenary.nvim'
-
-[[plugins]]
 repo = 'neovim/nvim-lspconfig'
 hook_add = '''
 set completeopt=menu,menuone,noselect
