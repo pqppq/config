@@ -123,6 +123,7 @@ inoremap <Right> <Nop>
 inoremap <Left>  <Nop>
 " inoremap <BS>    <Nop>
 inoremap <C-o> ()<Left>
+inoremap <C-l> {}<Left>
 nnoremap dw daw
 
 filetype plugin indent on
