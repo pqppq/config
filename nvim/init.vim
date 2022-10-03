@@ -43,6 +43,8 @@ let s:trouble_nvim       = s:toml_dir . 'trouble-nvim.toml'
 let s:plenary_nvim			 = s:toml_dir . 'plenary-nvim.toml'
 let s:nvim_treesitter	   = s:toml_dir . 'nvim-treesitter.toml'
 let s:telescope_nvim		 = s:toml_dir . 'telescope-nvim.toml'
+let s:vim_better_whitespace = s:toml_dir . 'vim-better-whitespace.toml'
+let s:octo_nvim          = s:toml_dir . 'octo-nvim.toml'
 " let s:deoplete_nvim      = s:toml_dir . '/deoplete-nvim.toml'
 " let s:dispatch_vim       = s:toml_dir . 'dispatch-vim.toml'
 " let s:nvim_jdtls         = s:toml_dir . 'nvim-jdtls.toml'
@@ -94,6 +96,8 @@ if dein#load_state(s:dein_dir)
 	" call dein#load_toml(s:vim_gitgutter)
 	call dein#load_toml(s:gitsigns_nvim)
 	call dein#load_toml(s:nightfox)
+	call dein#load_toml(s:vim_better_whitespace)
+	call dein#load_toml(s:octo_nvim)
 
 	call dein#end()
 	call dein#save_state()
