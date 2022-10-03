@@ -6,7 +6,7 @@ hook_add = '''
 	autocmd BufEnter * call defx#redraw()
 	autocmd WinNew * call defx#redraw()
 
-	nnoremap <silent>fs :Defx -auto-cd -vertical-preview -floating-preview -toggle<CR>
+	nnoremap <silent>fs :Defx -vertical-preview -toggle<CR>
 
 	call defx#custom#option('_', {
 		\ 'show_ignored_files': 1,
