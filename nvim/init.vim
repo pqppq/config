@@ -179,6 +179,8 @@ set softtabstop=2
 set noswapfile
 set clipboard+=unnamed
 set mouse=
+set spell
+let worda = 1
 hi MatchParen cterm=none ctermbg=blue ctermfg=white
 hi Normal ctermbg=none guibg=none
 hi StatusLine ctermbg=253 guifg=none guibg=none
